@@ -21,16 +21,10 @@
         type="image/x-icon">
 
   <script src="{{ asset('plugins/alpinejs/3.12.0_cdn.min.js') }}" defer></script>
-
   <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
-
-  <link rel="stylesheet"
-        href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
-
+  <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
-
   <link rel="preload" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}" as="style"
         onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
@@ -44,7 +38,7 @@
     }
   </style>
   <link rel="stylesheet" href="{{ asset('themes/MayTheme/app.css') }}">
-<link rel="stylesheet" href="{{ asset("themes/MayTheme/css/may.css") }}?v=11.0">
+  <link rel="stylesheet" href="{{ asset("themes/MayTheme/css/may.css") }}?v=11.0">
 </head>
 
 <body class="sidebar-mini layout-fixed dark-mode" style="height: auto;">
@@ -69,7 +63,6 @@
     </ul>
 
     <ul class="ml-auto navbar-nav">
-
       <li class="nav-item dropdown">
         <a class="px-2 nav-link" href="#" id="userDropdown" role="button" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="false">
@@ -133,18 +126,18 @@
           <div class="dropdown-divider"></div>
           <form method="post" action="{{ route('logout') }}">
             @csrf
-            <button class="dropdown-item" href="#" data-toggle="modal"
+            <button class="dropdown-item" data-toggle="modal"
                     data-target="#logoutModal">
               <i class="mr-2 text-gray-400 fas fa-sign-out-alt fa-sm fa-fw"></i>
               {{ __('Logout') }}
             </button>
-
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
           </form>
         </div>
       </li>
     </ul>
   </nav>
+
   <aside class="main-sidebar sidebar-open sidebar-dark-primary elevation-4">
     <a href="{{ route('home') }}" class="brand-link">
       <img width="64" height="64"
@@ -155,7 +148,6 @@
     </a>
 
     <div class="sidebar" style="overflow-y: auto">
-
       <nav class="my-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
             data-accordion="false">
@@ -187,6 +179,7 @@
               </a>
             </li>
           @endif
+
           @php($ticket_enabled = app(App\Settings\TicketSettings::class)->enabled)
           @if ($ticket_enabled)
             @canany(PermissionGroups::TICKET_PERMISSIONS)
@@ -386,7 +379,6 @@
             </li>
           @endcanany
 
-
           @canany(array_merge(
               PermissionGroups::PAYMENTS_PERMISSIONS,
               PermissionGroups::LOGS_PERMISSIONS
@@ -422,61 +414,61 @@
 
   <div class="content-wrapper">
     @yield('content')
-
     @include('modals.redeem_voucher_modal')
   </div>
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2021-{{ date('Y') }} <a
-        href="{{ url('/') }}">{{ config('app.name','Ctrlpanel.gg') }}</a>.</strong>
-    All rights
-    reserved. Powered by <a href="https://CtrlPanel.gg">CtrlPanel</a>.
-    @if (!str_contains(config('BRANCHNAME'), 'main') && !str_contains(config('BRANCHNAME'), 'unknown'))
-      Version <b>{{ config('app')['version'] }} - {{ config('BRANCHNAME') }}</b>
-    @endif
 
-    <div class="float-right d-none d-sm-inline-block">
-      @if ($website_settings->show_imprint)
-        <a target="_blank" href="{{ route('terms', 'imprint') }}"><strong>{{ __('Imprint') }}</strong></a> |
-      @endif
-      @if ($website_settings->show_privacy)
-        <a target="_blank" href="{{ route('terms', 'privacy') }}"><strong>{{ __('Privacy') }}</strong></a>
-      @endif
-      @if ($website_settings->show_tos)
-        | <a target="_blank"
-             href="{{ route('terms', 'tos') }}"><strong>{{ __('Terms of Service') }}</strong></a>
-      @endif
+  <footer class="main-footer">
+    <div class="may-footer-content">
+      Copyright &copy; 2025-2026 <strong>Kurayami Host</strong>. All right reserved. 
+      <br>
+      Powered by <a href="https://pixelcrew-programmings.vercel.app" target="_blank" class="pixel-highlight">PixelCrew-Team</a>
+      
+      <div class="mt-3">
+        <button id="theme-toggle" class="btn btn-sm">
+          <i id="theme-icon" class="fas fa-moon"></i>
+        </button>
+      </div>
     </div>
   </footer>
 
-  <aside class="control-sidebar control-sidebar-dark">
-  </aside>
+  <aside class="control-sidebar control-sidebar-dark"></aside>
 </div>
 
 <script src="{{ asset('plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
-
 <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
-
 <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
-
 <script src="{{ asset('plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
-
-<script src={{ asset('plugins/select2/js/select2.min.js') }}></script>
-
 
 <script>
   $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
-
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
+
+    // Lógica para alternar el modo claro/oscuro
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    
+    themeBtn.addEventListener('click', function() {
+      if (document.body.classList.contains('dark-mode')) {
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add('light-mode');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+      } else {
+        document.body.classList.remove('light-mode');
+        document.body.classList.add('dark-mode');
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
+      }
+    });
   });
 </script>
+
 <script>
   const processAlert = (msg) => {
       const regex = /\[REPRODUCE\]\((.*?)\)/;
@@ -488,76 +480,18 @@
       return msg;
   };
 
-  document.addEventListener("DOMContentLoaded", () => {
-      const regex = /\[REPRODUCE\]\((.*?)\)/;
-      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-      let node;
-      while(node = walker.nextNode()) {
-          const match = node.nodeValue.match(regex);
-          if(match && match[1]) {
-              new Audio(match[1]).play().catch(e => console.log("Autoplay bloqueado por navegador, necesita interacción"));
-              node.nodeValue = node.nodeValue.replace(regex, '');
-          }
-      }
-  });
-
   @if (Session::has('error'))
-  Swal.fire({
-    icon: 'error',
-    title: 'Oops...',
-    html: processAlert('{{ Session::get('error') }}'),
-  })
+  Swal.fire({ icon: 'error', title: 'Oops...', html: processAlert('{{ Session::get('error') }}') })
   @endif
   @if (Session::has('success'))
-  Swal.fire({
-    icon: 'success',
-    title: processAlert('{{ Session::get('success') }}'),
-    position: 'top-end',
-    showConfirmButton: false,
-    background: '#343a40',
-    toast: true,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  })
+  Swal.fire({ icon: 'success', title: processAlert('{{ Session::get('success') }}'), position: 'top-end', showConfirmButton: false, background: '#343a40', toast: true, timer: 3000, timerProgressBar: true })
   @endif
   @if (Session::has('info'))
-  Swal.fire({
-    icon: 'info',
-    title: processAlert('{{ Session::get('info') }}'),
-    position: 'top-end',
-    showConfirmButton: false,
-    background: '#343a40',
-    toast: true,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  })
+  Swal.fire({ icon: 'info', title: processAlert('{{ Session::get('info') }}'), position: 'top-end', showConfirmButton: false, background: '#343a40', toast: true, timer: 3000, timerProgressBar: true })
   @endif
   @if (Session::has('warning'))
-  Swal.fire({
-    icon: 'warning',
-    title: processAlert('{{ Session::get('warning') }}'),
-    position: 'top-end',
-    showConfirmButton: false,
-    background: '#343a40',
-    toast: true,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  })
+  Swal.fire({ icon: 'warning', title: processAlert('{{ Session::get('warning') }}'), position: 'top-end', showConfirmButton: false, background: '#343a40', toast: true, timer: 3000, timerProgressBar: true })
   @endif
 </script>
-<script>document.addEventListener("DOMContentLoaded",()=>{const f=document.querySelector(".main-footer");if(f)f.innerHTML="<div class=\"may-footer-content\">Powered by CtrlPanel ᴹᵃʸᵀʰᵉᵐᵉ <span>|</span> <a href=\"https://github.com/SoySapo6\" target=\"_blank\" class=\"may-link\">SoyMaycol</a></div>";document.querySelectorAll("a").forEach(a=>{if(a.textContent.toUpperCase().includes("GITHUB")){a.href="https://github.com/SoySapo6/MayTheme"}if(a.textContent.includes("CtrlPanel")||a.href.includes("sponsors")){a.innerHTML="<i class=\"fab fa-whatsapp\"></i> Sigueme en WhatsApp";a.href="https://whatsapp.com/channel/0029VayXJte65yD6LQGiRB0R";a.target="_blank"}})});</script>
 </body>
-
 </html>
