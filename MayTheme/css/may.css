@@ -3,9 +3,9 @@
 --may-bg: #000000;
 --may-sidebar: #050505;
 --may-card: #080808;
---may-border: #1a1a1a; /* Cambiado a un tono más oscuro para que resalte el neón */
+--may-border: #1a1a1a;
 --may-text: #ffffff;
---may-neon: #2ecc71; /* Color verde neón de la foto */
+--may-neon: #2ecc71; /* Verde Neón Yotsuba */
 }
 body, html, .wrapper, .content-wrapper {
 background-color: var(--may-bg) !important;
@@ -32,10 +32,10 @@ color: #999 !important;
 transition: all 0.2s;
 }
 .nav-sidebar .nav-link.active {
-background-color: var(--may-neon) !important; /* Ahora usa el verde neón */
+background-color: var(--may-neon) !important;
 color: #000 !important;
 font-weight: 800;
-box-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+box-shadow: 0 0 15px rgba(46, 204, 113, 0.4);
 }
 .nav-sidebar .nav-link:hover {
 color: #fff !important;
@@ -63,13 +63,13 @@ border-radius: 16px !important;
 }
 .login-box { width: 400px !important; margin: 0 auto; }
 
-/* --- BLOQUE DE BOTONES MODIFICADO (ESTILO NEÓN) --- */
+/* BOTONES NEÓN YOTSUBA */
 .btn, button {
-background-color: var(--may-neon) !important; /* Verde Neón */
+background-color: var(--may-neon) !important;
 border: none !important;
-color: #000 !important; /* Texto negro para legibilidad */
-border-radius: 12px !important; /* Bordes más suaves como la foto */
-padding: 12px 20px !important;
+color: #000 !important;
+border-radius: 12px !important;
+padding: 10px 20px !important;
 font-weight: 800;
 text-transform: uppercase;
 font-size: 0.85rem;
@@ -79,13 +79,12 @@ margin-top: 5px;
 margin-bottom: 5px;
 display: inline-block;
 }
-.btn:active { transform: translateY(2px); box-shadow: none; }
+.btn:active { transform: translateY(4px); box-shadow: none; }
 .btn:hover {
 background-color: #27ae60 !important;
 color: #000 !important;
-box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
+box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
 }
-/* -------------------------------------------------- */
 
 .btn-block { width: 100%; }
 input, select, textarea, .form-control {
@@ -101,52 +100,50 @@ input:focus {
 border-color: var(--may-neon) !important;
 background: #000 !important;
 }
+
+/* FOOTER Y RESALTE PIXELCREW */
 .main-footer {
 background: #000 !important;
 border-top: 1px solid #222 !important;
 padding: 20px;
 text-align: center;
 }
+.pixel-highlight {
+color: var(--may-neon) !important;
+font-weight: 800;
+text-shadow: 0 0 8px rgba(46, 204, 113, 0.6);
+text-decoration: none;
+}
+.pixel-highlight:hover { color: #fff !important; }
+
+/* INTERRUPTOR SOL/LUNA */
+#theme-toggle {
+background: #111 !important;
+border: 1px solid var(--may-neon) !important;
+color: var(--may-neon) !important;
+border-radius: 50% !important;
+width: 45px; height: 45px;
+padding: 0 !important;
+display: flex; align-items: center; justify-content: center;
+}
+
 .main-footer strong, .main-footer .float-right { display: none !important; }
 .may-footer-content {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 15px;
-color: #666;
+display: flex; flex-direction: column;
+align-items: center; justify-content: center;
+gap: 12px; color: #666;
 }
-.may-link {
-color: #fff;
-text-decoration: none;
-font-weight: 800;
-border: 1px solid #333;
-padding: 5px 15px;
-border-radius: 20px;
-background: #0a0a0a;
-display: flex;
-align-items: center;
-gap: 8px;
-}
-.may-wave {
-width: 10px; height: 10px;
-background: #2979ff;
-border-radius: 50%;
-animation: pulse 2s infinite;
-}
+
+.may-wave { width: 10px; height: 10px; background: var(--may-neon); border-radius: 50%; animation: pulse 2s infinite; }
 @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2); opacity: 0; } }
-.alert {
-background: #111 !important;
-border: 1px solid #fff !important;
-color: #fff !important;
-border-radius: 12px !important;
-}
+.alert { background: #111 !important; border: 1px solid var(--may-neon) !important; color: #fff !important; border-radius: 12px !important; }
 ::-webkit-scrollbar { width: 6px; background: #000; }
 ::-webkit-scrollbar-thumb { background: var(--may-neon); border-radius: 3px; }
+
 @media (max-width: 768px) {
 .content-wrapper { padding: 10px !important; }
 .card { border-radius: 12px !important; margin-bottom: 15px !important; }
 .btn { width: 100%; margin: 5px 0 !important; padding: 15px !important; }
 .login-box { width: 90% !important; }
-.col-lg-3, .col-6 { padding: 0 5px !important; }
 .nav-link { padding: 12px !important; }
 }
