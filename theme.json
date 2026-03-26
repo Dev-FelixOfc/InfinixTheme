@@ -1,9 +1,9 @@
 {
-    "name": "MayTheme v12",
-    "title": "MayTheme • Tema para CtrlPanel",
-    "description": "Tema definitivo animado alto rendimiento y fluido con animaciones y colores de blanco y negro",
+    "name": "InfinixTheme v1.0",
+    "title": "InfinixTheme • Tema para CtrlPanel",
+    "description": "Tema para Kurayami Host",
     "parent": "default",
-    "path": "themes/MayTheme",
-    "version": "12.2",
-    "author": "SoyMaycol"
+    "path": "themes/InfinixTheme",
+    "version": "1.0",
+    "author": "Dev-FelixOfc"
 }
