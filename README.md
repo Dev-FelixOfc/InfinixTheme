@@ -1,3 +1,10 @@
+##. CREDITOS:
+
+> MayTheme (github.com/SoySapo6/MayTheme)
+Dejenle una estrella de parte mía.
+
+</details>
+
 ## Instalación
 
 Siga estos pasos para la implementación del tema en su entorno de producción.
