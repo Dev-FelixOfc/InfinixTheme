@@ -1,4 +1,4 @@
-##. CREDITOS:
+## CREDITOS:
 
 > MayTheme (github.com/SoySapo6/MayTheme)
 Dejenle una estrella de parte mía.
